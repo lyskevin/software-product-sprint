@@ -1,3 +1,8 @@
+.contact-icon:hover {
+  color: dodgerblue;
+  cursor: pointer;
+}
+
 #contact-information {
   align-items: center;
   display: flex;
@@ -15,6 +20,17 @@
   margin-top: 20px;
 }
 
+#gallery-header-container {
+  display: flex;
+  margin: 10px 0px;
+}
+
+#gallery-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+
 #icons-container {
   margin: 10px 0px;
 }
@@ -23,19 +39,17 @@
   margin: 0px 20px;
 }
 
-.icon:hover {
-  color: dodgerblue;
-  cursor: pointer;
-}
-
 .image-thumbnails img {
   margin: 10px;
-  max-height: 300px;
-  max-width: 300px;
+  max-height: 200px;
+  max-width: 200px;
 }
 
 #navbar {
   margin: auto 0px;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #page-container {
