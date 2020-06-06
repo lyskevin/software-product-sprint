@@ -1,13 +1,31 @@
+#contact-information {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
 #content {
-  margin-bottom: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
+  margin: 30px auto 30px auto;
   width: 800px;
 }
 
 #fact-container {
   margin-top: 20px;
+}
+
+#icons-container {
+  margin: 10px 0px;
+}
+
+.icon {
+  margin: 0px 20px;
+}
+
+.icon:hover {
+  color: dodgerblue;
+  cursor: pointer;
 }
 
 .image-thumbnails img {
@@ -17,14 +35,12 @@
 }
 
 #navbar {
-  margin-bottom: auto;
-  margin-top: auto;
+  margin: auto 0px;
 }
 
 #page-container {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0px 20px;
 }

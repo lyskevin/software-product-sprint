@@ -31,3 +31,10 @@ function addRandomFact() {
   const factContainer = document.getElementById('fact-container');
   factContainer.innerText = randomFact;
 }
+
+/**
+ * Opens a new tab with the specified url
+ */
+function openNewTab(url) {
+  window.open(url, '_blank');
+}
