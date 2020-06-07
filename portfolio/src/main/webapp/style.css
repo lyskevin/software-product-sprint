@@ -1,3 +1,8 @@
+#about-header-container, #gallery-header-container, #project-header-container {
+  display: flex;
+  margin: 10px 0px;
+}
+
 .contact-icon:hover {
   color: dodgerblue;
   cursor: pointer;
@@ -18,11 +23,6 @@
 
 #fact-container {
   margin-top: 20px;
-}
-
-#gallery-header-container, #project-header-container {
-  display: flex;
-  margin: 10px 0px;
 }
 
 #gallery-row {
