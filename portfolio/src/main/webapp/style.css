@@ -20,7 +20,7 @@
   margin-top: 20px;
 }
 
-#gallery-header-container {
+#gallery-header-container, #project-header-container {
   display: flex;
   margin: 10px 0px;
 }
@@ -57,4 +57,19 @@
   flex-direction: row;
   height: 100vh;
   margin: 0px 20px;
+}
+
+#project-container {
+  margin: 20px 0px;
+}
+
+#project-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+#project-image-container img {
+  max-width: 600px;
+  max-height: 400px;
 }
