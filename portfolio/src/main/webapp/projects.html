@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    >
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous">
+    </script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous">
+    </script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous">
+    </script>
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/7cf05ff215.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="page-container">
+      <div id="navbar">
+        <nav class="nav flex-column">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="blog.html">Blog</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="gallery.html">Photo Gallery</a>
+          <a class="nav-link disabled" href="projects.html">Projects</a>
+        </nav>
+      </div>
+      <div id="content">
+        <h1>Projects</h1>
+        <div id="project-container">
+          <div id="project-header-container">
+            <h2>Slim Jeans Recipe Calorie Counter</h2>
+            <i class="fas fa-utensils fa-2x icon"></i>
+          </div>
+          <div>
+            <div id="project-image-container">
+              <img
+                  alt="Pie chart representing the breakdown of a recipe's calories"
+                  src="/images/slim_jeans_pie_chart.jpg"
+              >
+            </div>
+            <p>
+                Slim Jeans Recipe Calorie Counter is a website which generates
+                a recipe's caloric information based on its ingredients. I worked
+                on this with my friend from NUS, Ryan Tan, as part of Orbital 2019.
+                Orbital is NUS' summer project module which freshmen with the
+                opportunity to hone their software engineering skills during the
+                summer holidays. We decided to work on this project because we
+                realised that many online recipes did not provide caloric information.
+            </p>
+            <div id="project-image-container">
+              <img
+                  alt="List of saved recipes"
+                  src="/images/slim_jeans_saved_recipes.jpg"
+              >
+            </div>
+            <p>
+                We used HTML, CSS, vanilla JavaScript, and a templating language
+                called Jinja2 to create the website's user interface. Python's
+                Flask framework was chosen to run the backend code, with SQLite
+                for the database. Additional libraries include BootStrap for CSS
+                styling and Twitter's typeahead.js for our autocomplete feature.
+                We did not use more popular front-end libraries such as React
+                because we wanted to experience building a website from scratch.
+            </p>
+            <div id="project-image-container">
+              <img
+                  alt="Calorie/time graph for saved recipes"
+                  src="/images/slim_jeans_graph.jpg"
+              >
+            </div>
+            <p>
+                The project was a fruitful experience for us and taught us about
+                working together in teams. During my freshman year in NUS, all of
+                my programming assignments did not involve group work and I was
+                used to completing my work in a certain way. This experience made
+                me improve my communication skills and become more mindful about
+                my own work. Feel free to visit the website
+                <a href="https://lyskevin.pythonanywhere.com/">here</a>!
+            </p>
+          </div>
+        </div>
+        <div id="project-container">
+          <div id="project-header-container">
+            <h2>Kattis Solution Code Repository</h2>
+            <i class="fas fa-cat fa-2x icon"></i>
+          </div>
+          <div>
+            <div id="project-image-container">
+              <img
+                  alt="Example Kattis Question (Binary search tree)"
+                  src="/images/kattis_example_question.jpg">
+            </div>
+            <p>
+                Kattis is a website where users can upload or solve competitive
+                programming questions. These questions normally require out of
+                the box solutions which must be heavily optimised in order to pass
+                the specified time limit. This is especially so if solutions are
+                submitted in Java, which is slower than C++, the preferred language.
+            </p>
+            <div id="project-image-container">
+              <img
+                  alt="View of the Kattis GitHub repository"
+                  src="/images/kattis_repository.jpg">
+            </div>
+            <p>
+                I became a Teaching Assistant (TA) for a Data Structures and
+                Algorithms module (CS2040) during my second year at NUS. I had
+                taken this module during the prior semester and really enjoyed
+                the thrill of solving the problems associated with it. The
+                questions for the lab assignments that coming semester were all
+                from Kattis. I decided to attempt at least one question every day
+                and upload my code onto GitHub for easier reference. It has since
+                become a habit for me and I believe that it will help with
+                technical interviews in future. I am aware that my code might be
+                plagiarised but better solutions exist online and it also defeats
+                the purpose of one's learning if a student were to copy my code.
+                The GitHub repository can be found
+                <a href="https://github.com/lyskevin/kattis/">here</a>.
+            </p>
+          </div>
+        </div>
+        <div id="project-container">
+          <div id="project-header-container">
+            <h2>Duke Chatbot</h2>
+            <i class="fas fa-comment-dots fa-2x icon"></i>
+          </div>
+          <div>
+            <div id="project-image-container">
+              <img
+                  alt="Duke's user interface"
+                  src="/images/duke.jpg">
+            </div>
+            <p>
+                Duke was a greenfield software engineering project that I
+                worked on while taking a software engineering module (CS2103T)
+                at NUS. The objective was to build a chatbot using Java and
+                JavaFX while adhering to software engineering principles, such
+                as having clean code, working with user specifications, following
+                design patterns, and unit testing. This was my first software
+                engineering project and it taught me that I still have a long way
+                to go when it comes to designing and building software systems.
+                The code can be found
+                <a href="https://github.com/lyskevin/duke">here</a>.
+            </p>
+          </div>
+        </div>
+        <div id="project-container">
+          <div id="project-header-container">
+            <h2>Typee CLI Application</h2>
+            <i class="fas fa-keyboard fa-2x icon"></i>
+          </div>
+          <div>
+            <div id="project-image-container">
+              <img
+                  alt="Screenshot of part of the Typee GitHub repository"
+                  src="/images/typee.jpg">
+            </div>
+            <p>
+                Typee is a command line interface (CLI) application designed
+                for secretaries and receptionists to schedule. It was a
+                brownfield software engineering project that I worked on
+                with a group of four other students during the second half
+                of CS2103T. It reinforced the concepts which we were taught
+                during the first half of the module and also introduced new
+                software engineering principles to us. We learnt about
+                assigning roles to each member of the team and other
+                collaborative aspects of working in a group. The relevance
+                of good business logic was also stressed to us; we had to
+                adhere to user requirements and work on modifying an existing
+                code base. The code repository can be found at this
+                <a href="https://github.com/lyskevin/main">link</a>.
+            </p>
+          </div>
+        </div>
+        <div id="project-container">
+          <div id="project-header-container">
+            <h2>Heirloom</h2>
+            <i class="fas fa-leaf fa-2x icon"></i>
+          </div>
+          <div>
+            <div id="project-image-container">
+              <img
+                  alt="Screenshot of the Heirloom website"
+                  src="/images/heirloom.jpg">
+            </div>
+            <p>
+                Heirloom is a startup which aims to tackle the problem of food
+                waste in Singapore. My friend from NUS business school asked me
+                to co-found the business with him. I am currently working with
+                a friend from computer science to develop a mobile application
+                for the business. It is still a work in progress and we hope to
+                launch in due time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
