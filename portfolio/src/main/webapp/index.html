@@ -31,7 +31,7 @@
     <script src="https://kit.fontawesome.com/7cf05ff215.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getComments()">
     <div id="page-container">
       <div id="navbar">
         <nav class="nav flex-column">
@@ -62,6 +62,10 @@
         <p>Click here to get a random fact about me:</p>
         <button onclick="addRandomFact()">Fact!</button>
         <div id="fact-container"></div>
+        <div id="comments-container">
+          <p>Comments:</p>
+          <ul id="comments-list"></ul>
+        </div>
       </div>
     </div>
   </body>

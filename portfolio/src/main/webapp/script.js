@@ -34,8 +34,33 @@ function addRandomFact() {
 }
 
 /**
- * Opens a new tab with the specified url
+ * Opens a new tab with the specified url.
  */
 function openNewTab(url) {
   window.open(url, '_blank');
+}
+
+/**
+ * Gets comments from the server and displays them
+ * in the comments section of the home page.
+ */
+function getComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const commentsListElement = document.getElementById('comments-list');
+    commentsListElement.innerHTML = '';
+    for (let index in comments) {
+      commentsListElement.appendChild(
+          createListElement(comments[index])
+      );
+    }
+  });
+}
+
+/**
+ * Creates an <li> element containing text.
+ */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
