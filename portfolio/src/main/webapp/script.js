@@ -34,8 +34,17 @@ function addRandomFact() {
 }
 
 /**
- * Opens a new tab with the specified url
+ * Opens a new tab with the specified url.
  */
 function openNewTab(url) {
   window.open(url, '_blank');
 }
+
+/**
+ * Gets a message from the server.
+ */
+ function getMessage() {
+  fetch('/data').then(response => response.text()).then(message => {
+    document.getElementById('message-container').innerText = message;
+  });
+ }
