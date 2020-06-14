@@ -29,7 +29,6 @@ public class DataServlet extends HttpServlet {
 
   private String json;
 
-  @Override
   public void init() {
     CommentDatastore commentDatastore = new CommentDatastore();
     commentDatastore.initializeComments();
@@ -40,6 +39,23 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
     response.getWriter().println(json);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Optional<String> comment = getComment(request);
+    if (comment.isPresent()) {
+      COMMENTS.add(comment.get());
+    }
+    response.sendRedirect("./index.html");
+  }
+
+  private Optional<String> getComment(HttpServletRequest request) {
+    String comment = request.getParameter("comment-input-field");
+    if (comment == null || comment.equals("")) {
+      return Optional.empty();
+    }
+    return Optional.ofNullable(comment);
   }
 
 }
