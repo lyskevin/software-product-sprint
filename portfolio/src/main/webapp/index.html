@@ -62,6 +62,21 @@
         <p>Click here to get a random fact about me:</p>
         <button onclick="addRandomFact()">Fact!</button>
         <div id="fact-container"></div>
+        <form
+            action="/data" 
+            id="comment-form"
+            method="POST">
+          <p>Submit a comment here:</p>
+          <br>
+          <textarea
+              id="comment-input-field"
+              name="comment-input-field"></textarea> <!-- Prevent whitespace from rendering -->
+          <br>
+          <input
+              id="comment-input-submit-button"
+              name="comment-input-submit-button"
+              type="submit">
+        </form>
         <div id="comments-container">
           <p>Comments:</p>
           <ul id="comments"></ul>
