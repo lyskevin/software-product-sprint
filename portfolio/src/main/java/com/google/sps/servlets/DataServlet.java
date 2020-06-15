@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private Gson gson = new Gson();
   private static final ArrayList<String> COMMENTS = new ArrayList<>();
 
   @Override
@@ -42,7 +43,7 @@ public class DataServlet extends HttpServlet {
   }
 
   private String convertCommentsToJson() {
-    Gson gson = new Gson();
+    gson = new Gson();
     return gson.toJson(COMMENTS);
   }
 
