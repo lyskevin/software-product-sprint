@@ -34,8 +34,8 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
 
   private Gson gson = new Gson();
-  private static final ArrayList<String> COMMENTS = new ArrayList<>();
-  private static final DatastoreService DATASTORE = DatastoreServiceFactory.getDatastoreService();
+  private static ArrayList<String> comments = new ArrayList<>();
+  private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -45,13 +45,13 @@ public class DataServlet extends HttpServlet {
   }
 
   private void queryCommentsFromDatabase() {
-    COMMENTS.clear();
+    comments.clear();
 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = DATASTORE.prepare(query);
+    PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      COMMENTS.add((String) entity.getProperty("content"));
+      comments.add((String) entity.getProperty("content"));
     }
   }
 
@@ -69,7 +69,7 @@ public class DataServlet extends HttpServlet {
       commentEntity.setProperty("content", comment.get());
       commentEntity.setProperty("timestamp", System.currentTimeMillis());
 
-      DATASTORE.put(commentEntity);
+      datastore.put(commentEntity);
     }
 
     response.sendRedirect("./index.html");
