@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    >
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous">
+    </script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous">
+    </script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous">
+    </script>
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/7cf05ff215.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </head>
+  <body onload="getComments()">
+    <div id="page-container">
+      <div id="navbar">
+        <nav class="nav flex-column">
+          <a class="nav-link disabled" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="blog.html">Blog</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="gallery.html">Photo Gallery</a>
+          <a class="nav-link" href="projects.html">Projects</a>
+        </nav>
+      </div>
+      <div id="content">
+        <h1>My Portfolio</h1>
+        <div class="image-thumbnails">
+          <img
+              alt="Me holding up the bone of a tomahawk steak"
+              src="/images/kevin_tomahawk_steak.jpg"
+          >
+        </div>
+        <p>
+            Hello! My name is Kevin and I'm studying Computer Science at the
+            National University of Singapore (NUS). I have a passion for software
+            engineering as well as data structures and algorithms. I enjoy
+            teaching at NUS and believe that everyone can learn Computer
+            Science concepts well if they develop some level of intuition for
+            them. My hobbies include baking, reading, and growth investing.
+        </p>
+        <p>Click here to get a random fact about me:</p>
+        <button onclick="addRandomFact()">Fact!</button>
+        <div id="fact-container"></div>
+        <form
+            action="/data" 
+            id="comment-form"
+            method="POST">
+          <p>Submit a comment here:</p>
+          <br>
+          <textarea
+              id="comment-input-field"
+              name="comment-input-field"></textarea> <!-- Prevent whitespace from rendering -->
+          <br>
+          <input
+              id="comment-input-submit-button"
+              name="comment-input-submit-button"
+              type="submit">
+        </form>
+        <div id="comments-container">
+<<<<<<< HEAD
+          <p>Comments:</p>
+          <ul id="comments"></ul>
+=======
+          <p>Submitted comments:</p>
+          <ul id="comments-list"></ul>
+>>>>>>> Add comments feature to website
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
