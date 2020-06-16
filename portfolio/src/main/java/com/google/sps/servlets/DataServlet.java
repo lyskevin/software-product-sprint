@@ -15,10 +15,13 @@
 package com.google.sps.servlets;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.google.sps.storage.CommentDatastore;
 import com.google.sps.util.JsonUtil;
 
 =======
+=======
+>>>>>>> Add datastore for comments
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -63,6 +66,17 @@ public class DataServlet extends HttpServlet {
 
     for (Entity entity : results.asIterable()) {
       comments.add((String) entity.getProperty("content"));
+    }
+  }
+
+  private void queryCommentsFromDatabase() {
+    COMMENTS.clear();
+
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    PreparedQuery results = DATASTORE.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      COMMENTS.add((String) entity.getProperty("content"));
     }
   }
 
