@@ -27,11 +27,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private CommentDatastore commentDatastore;
   private String json;
 
   @Override
   public void init() {
-    CommentDatastore commentDatastore = new CommentDatastore();
+    commentDatastore = new CommentDatastore();
     commentDatastore.initializeComments();
     json = JsonUtil.convertToJson(commentDatastore.getComments());
   }
