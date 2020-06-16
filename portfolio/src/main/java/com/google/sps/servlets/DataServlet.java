@@ -31,8 +31,13 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
 >>>>>>> Add datastore for comments
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.Optional;
 
+=======
+import java.util.ArrayList;
+import java.util.Optional;
+>>>>>>> Add comments feature to website
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -69,22 +74,6 @@ public class DataServlet extends HttpServlet {
     }
   }
 
-  private void queryCommentsFromDatabase() {
-    comments.clear();
-
-    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = datastore.prepare(query);
-
-    for (Entity entity : results.asIterable()) {
-      comments.add((String) entity.getProperty("content"));
-    }
-  }
-
-  private String convertCommentsToJson() {
-    Gson gson = new Gson();
-    return gson.toJson(comments);
-  }
-
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     addCommentToDatastore(request);
@@ -98,7 +87,7 @@ public class DataServlet extends HttpServlet {
       commentDatastore.add(comment.get());
     }
 
-    response.sendRedirect("./index.html");
+    response.sendRedirect(HOME_PAGE_URL);
   }
 
   private Optional<String> getComment(HttpServletRequest request) {
