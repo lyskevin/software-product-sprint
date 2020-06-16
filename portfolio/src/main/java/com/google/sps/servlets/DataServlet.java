@@ -34,11 +34,11 @@ public class DataServlet extends HttpServlet {
   public void init() {
     commentDatastore = new CommentDatastore();
     commentDatastore.initializeComments();
-    json = JsonUtil.convertToJson(commentDatastore.getComments());
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    json = JsonUtil.convertToJson(commentDatastore.getComments());
     response.setContentType("application/json");
     response.getWriter().println(json);
   }
