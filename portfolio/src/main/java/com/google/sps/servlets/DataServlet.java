@@ -77,12 +77,13 @@ public class DataServlet extends HttpServlet {
 
   private Optional<String> getComment(HttpServletRequest request) {
     String comment = request.getParameter("comment-input-field");
-    if (comment != null) {
-      String commentContent = comment.trim();
-      if (!commentContent.equals("")) {
-        return Optional.ofNullable(commentContent);
-      }
+    if (comment == null) {
+      return Optional.empty();
     }
-    Optional.empty();
+    String commentContent = comment.trim();
+    if (commentContent.equals("")) {
+      return Optional.empty();
+    }
+    return Optional.ofNullable(commentContent);
   }
 }
