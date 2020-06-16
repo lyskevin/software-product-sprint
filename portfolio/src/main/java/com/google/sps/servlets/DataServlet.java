@@ -35,6 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+<<<<<<< HEAD
   private static final String HOME_PAGE_URL = "./index.html";
 
   private CommentDatastore commentDatastore;
@@ -44,6 +45,11 @@ public class DataServlet extends HttpServlet {
     commentDatastore = new CommentDatastore();
     commentDatastore.initializeComments();
   }
+=======
+  private Gson gson = new Gson();
+  private static ArrayList<String> comments = new ArrayList<>();
+  private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+>>>>>>> Make comments and datastore instance variables instead of constants inside DataServlet.java
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -56,10 +62,10 @@ public class DataServlet extends HttpServlet {
     comments.clear();
 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = DATASTORE.prepare(query);
+    PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      COMMENTS.add((String) entity.getProperty("content"));
+      comments.add((String) entity.getProperty("content"));
     }
   }
 
@@ -73,7 +79,15 @@ public class DataServlet extends HttpServlet {
     Optional<String> comment = getComment(request);
 
     if (comment.isPresent()) {
+<<<<<<< HEAD
       commentDatastore.add(comment.get());
+=======
+      Entity commentEntity = new Entity("Comment");
+      commentEntity.setProperty("content", comment.get());
+      commentEntity.setProperty("timestamp", System.currentTimeMillis());
+
+      datastore.put(commentEntity);
+>>>>>>> Make comments and datastore instance variables instead of constants inside DataServlet.java
     }
 
     response.sendRedirect(HOME_PAGE_URL);
