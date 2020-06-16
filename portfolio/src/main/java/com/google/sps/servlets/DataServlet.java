@@ -56,19 +56,19 @@ public class DataServlet extends HttpServlet {
   }
 
   private void queryCommentsFromDatabase() {
-    COMMENTS.clear();
+    comments.clear();
 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = DATASTORE.prepare(query);
+    PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      COMMENTS.add((String) entity.getProperty("content"));
+      comments.add((String) entity.getProperty("content"));
     }
   }
 
   private String convertCommentsToJson() {
     Gson gson = new Gson();
-    return gson.toJson(COMMENTS);
+    return gson.toJson(comments);
   }
 
   @Override
