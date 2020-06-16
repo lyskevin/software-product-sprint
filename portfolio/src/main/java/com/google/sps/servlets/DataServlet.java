@@ -57,7 +57,7 @@ public class DataServlet extends HttpServlet {
 
   private String convertCommentsToJson() {
     gson = new Gson();
-    return gson.toJson(COMMENTS);
+    return gson.toJson(comments);
   }
 
   @Override
@@ -85,5 +85,4 @@ public class DataServlet extends HttpServlet {
     }
     Optional.empty();
   }
-
 }
