@@ -30,8 +30,12 @@ public class DataServlet extends HttpServlet {
   private static final ArrayList<String> COMMENTS = new ArrayList<>();
 
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  public void init() {
     initializeComments();
+  }
+
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json");
     response.getWriter().println(convertCommentsToJson());
   }
