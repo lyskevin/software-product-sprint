@@ -14,9 +14,19 @@
 
 package com.google.sps.servlets;
 
+<<<<<<< HEAD
 import com.google.sps.storage.CommentDatastore;
 import com.google.sps.util.JsonUtil;
 
+=======
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.gson.Gson;
+>>>>>>> Add datastore for comments
 import java.io.IOException;
 import java.util.Optional;
 
@@ -45,6 +55,22 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
+  private void queryCommentsFromDatabase() {
+    COMMENTS.clear();
+
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    PreparedQuery results = DATASTORE.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      COMMENTS.add((String) entity.getProperty("content"));
+    }
+  }
+
+  private String convertCommentsToJson() {
+    Gson gson = new Gson();
+    return gson.toJson(COMMENTS);
+  }
+
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     addCommentToDatastore(request);
@@ -53,9 +79,12 @@ public class DataServlet extends HttpServlet {
 
   private void addCommentToDatastore(HttpServletRequest request) {
     Optional<String> comment = getComment(request);
+
     if (comment.isPresent()) {
       commentDatastore.add(comment.get());
     }
+
+    response.sendRedirect("./index.html");
   }
 
   private Optional<String> getComment(HttpServletRequest request) {
