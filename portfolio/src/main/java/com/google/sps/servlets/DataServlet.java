@@ -18,6 +18,8 @@ import com.google.sps.storage.CommentDatastore;
 import com.google.sps.util.JsonUtil;
 
 import java.io.IOException;
+import java.util.Optional;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,27 +29,34 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private static final String HOME_PAGE_URL = "./index.html";
+
+  private CommentDatastore commentDatastore;
   private String json;
 
   public void init() {
-    CommentDatastore commentDatastore = new CommentDatastore();
+    commentDatastore = new CommentDatastore();
     commentDatastore.initializeComments();
-    json = JsonUtil.convertToJson(commentDatastore.getComments());
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    json = JsonUtil.convertToJson(commentDatastore.getComments());
     response.setContentType("application/json");
     response.getWriter().println(json);
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    addCommentToDatastore(request);
+    response.sendRedirect(HOME_PAGE_URL);
+  }
+
+  private void addCommentToDatastore(HttpServletRequest request) {
     Optional<String> comment = getComment(request);
     if (comment.isPresent()) {
-      comments.add(comment.get());
+      commentDatastore.add(comment.get());
     }
-    response.sendRedirect("./index.html");
   }
 
   private Optional<String> getComment(HttpServletRequest request) {
