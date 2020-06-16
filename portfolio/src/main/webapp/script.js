@@ -46,12 +46,10 @@ function openNewTab(url) {
  */
 function getComments() {
   fetch('/data').then(response => response.json()).then((comments) => {
-    const commentsListElement = document.getElementById('comments-list');
+    const commentsListElement = document.getElementById('comments');
     commentsListElement.innerHTML = '';
     for (let index in comments) {
-      commentsListElement.appendChild(
-          createListElement(comments[index])
-      );
+      commentsListElement.appendChild(createListElement(comments[index]));
     }
   });
 }

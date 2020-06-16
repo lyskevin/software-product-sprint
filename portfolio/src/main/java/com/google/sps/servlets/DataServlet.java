@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private static final ArrayList<String> COMMENTS = new ArrayList<>();
+  private static final ArrayList<String> comments = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -37,27 +37,28 @@ public class DataServlet extends HttpServlet {
 
   private String convertCommentsToJson() {
     Gson gson = new Gson();
-    return gson.toJson(COMMENTS);
+    return gson.toJson(comments);
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Optional<String> comment = getComment(request);
     if (comment.isPresent()) {
-      COMMENTS.add(comment.get());
+      comments.add(comment.get());
     }
     response.sendRedirect("./index.html");
   }
 
   private Optional<String> getComment(HttpServletRequest request) {
     String comment = request.getParameter("comment-input-field");
-    if (comment != null) {
-      String commentContent = comment.trim();
-      if (!commentContent.equals("")) {
-        return Optional.ofNullable(commentContent);
-      }
+    if (comment == null) {
+      return Optional.empty();
     }
-    Optional.empty();
+    String commentContent = comment.trim();
+    if (commentContent.equals("")) {
+      return Optional.empty();
+    }
+    return Optional.ofNullable(commentContent);
   }
 
 }
