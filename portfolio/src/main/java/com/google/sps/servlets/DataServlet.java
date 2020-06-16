@@ -14,14 +14,9 @@
 
 package com.google.sps.servlets;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.google.sps.storage.CommentDatastore;
 import com.google.sps.util.JsonUtil;
 
-=======
-=======
->>>>>>> Add datastore for comments
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -29,15 +24,8 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
->>>>>>> Add datastore for comments
 import java.io.IOException;
-<<<<<<< HEAD
 import java.util.Optional;
-
-=======
-import java.util.ArrayList;
-import java.util.Optional;
->>>>>>> Add comments feature to website
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -68,10 +56,10 @@ public class DataServlet extends HttpServlet {
     comments.clear();
 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = datastore.prepare(query);
+    PreparedQuery results = DATASTORE.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      comments.add((String) entity.getProperty("content"));
+      COMMENTS.add((String) entity.getProperty("content"));
     }
   }
 
