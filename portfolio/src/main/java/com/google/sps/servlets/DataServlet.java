@@ -30,9 +30,9 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
 
   private static CommentDatastore commentDatastore;
-  private static final String HOME_PAGE_URL = "./index.html";
   private String json;
 
+  @Override
   public void init() {
     commentDatastore = new CommentDatastore();
     commentDatastore.initializeComments();
@@ -48,7 +48,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     addCommentToDatastore(request);
-    response.sendRedirect(HOME_PAGE_URL);
+    response.sendRedirect("./index.html");
   }
 
   private void addCommentToDatastore(HttpServletRequest request) {
