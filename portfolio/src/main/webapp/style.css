@@ -3,6 +3,20 @@
   margin: 10px 0px;
 }
 
+#comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#comment-input-field {
+  height: 100px;
+  width: 100%;
+}
+
+#comment-input-submit-button {
+  min-width: 0;
+}
+
 #comments-container {
   margin: 20px 0px;
 }
@@ -26,7 +40,7 @@
 }
 
 #fact-container {
-  margin-top: 20px;
+  margin: 20px 0px;
 }
 
 #gallery-row {

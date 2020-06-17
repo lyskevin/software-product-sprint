@@ -10,13 +10,17 @@ public class CommentDatastore {
     comments = new ArrayList<>();
   }
 
+  public ArrayList<String> getComments() {
+    return comments;
+  }
+
   public void initializeComments() {
     comments.add("Hello!");
     comments.add("Amazing website!");
     comments.add("Google SPS!");
   }
 
-  public ArrayList<String> getComments() {
-    return comments;
+  public void add(String comment) {
+    comments.add(comment);
   }
 }
