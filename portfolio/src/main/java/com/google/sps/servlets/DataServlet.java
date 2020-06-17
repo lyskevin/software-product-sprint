@@ -50,17 +50,6 @@ public class DataServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
-  private void queryCommentsFromDatabase() {
-    comments.clear();
-
-    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
-    PreparedQuery results = DATASTORE.prepare(query);
-
-    for (Entity entity : results.asIterable()) {
-      COMMENTS.add((String) entity.getProperty("content"));
-    }
-  }
-
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     addCommentToDatastore(request);
@@ -69,12 +58,9 @@ public class DataServlet extends HttpServlet {
 
   private void addCommentToDatastore(HttpServletRequest request) {
     Optional<String> comment = getComment(request);
-
     if (comment.isPresent()) {
       commentDatastore.add(comment.get());
     }
-
-    response.sendRedirect(HOME_PAGE_URL);
   }
 
   private Optional<String> getComment(HttpServletRequest request) {
