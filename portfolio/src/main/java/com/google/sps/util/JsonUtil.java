@@ -11,5 +11,4 @@ public class JsonUtil {
   public static String convertToJson(ArrayList<String> content) {
     return GSON.toJson(content);
   }
-
 }

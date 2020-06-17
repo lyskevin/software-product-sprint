@@ -19,5 +19,4 @@ public class CommentDatastore {
   public ArrayList<String> getComments() {
     return comments;
   }
-
 }

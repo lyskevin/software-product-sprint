@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private CommentDatastore commentDatastore;
+  private static CommentDatastore commentDatastore;
   private String json;
 
   @Override
@@ -42,5 +42,4 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json");
     response.getWriter().println(json);
   }
-
 }
