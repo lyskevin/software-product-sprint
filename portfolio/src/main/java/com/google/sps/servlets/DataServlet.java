@@ -41,7 +41,6 @@ public class DataServlet extends HttpServlet {
   @Override
   public void init() {
     commentDatastore = new CommentDatastore();
-    commentDatastore.initializeComments();
   }
 
   @Override
