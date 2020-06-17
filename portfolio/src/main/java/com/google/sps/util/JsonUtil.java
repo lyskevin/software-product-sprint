@@ -1,8 +1,7 @@
 package com.google.sps.util;
 
-import java.util.ArrayList;
-
 import com.google.gson.Gson;
+import java.util.ArrayList;
 
 public class JsonUtil {
 
