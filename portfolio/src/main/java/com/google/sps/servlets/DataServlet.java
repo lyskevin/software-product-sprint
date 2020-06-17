@@ -29,8 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private static final String HOME_PAGE_URL = "./index.html";
   private static CommentDatastore commentDatastore;
-  private String json;
 
   @Override
   public void init() {
@@ -40,7 +40,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    json = JsonUtil.convertToJson(commentDatastore.getComments());
+    String json = JsonUtil.convertToJson(commentDatastore.getComments());
     response.setContentType("application/json");
     response.getWriter().println(json);
   }
@@ -48,7 +48,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     addCommentToDatastore(request);
-    response.sendRedirect("./index.html");
+    response.sendRedirect(HOME_PAGE_URL);
   }
 
   private void addCommentToDatastore(HttpServletRequest request) {
