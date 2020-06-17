@@ -14,19 +14,32 @@
 
 package com.google.sps.servlets;
 
+import com.google.sps.storage.CommentDatastore;
+import com.google.sps.util.JsonUtil;
+
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private static CommentDatastore commentDatastore;
+  private String json;
+
+  @Override
+  public void init() {
+    commentDatastore = new CommentDatastore();
+    commentDatastore.initializeComments();
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("Hello Kevin!");
+    json = JsonUtil.convertToJson(commentDatastore.getComments());
+    response.setContentType("application/json");
+    response.getWriter().println(json);
   }
 }

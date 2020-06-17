@@ -41,10 +41,24 @@ function openNewTab(url) {
 }
 
 /**
- * Gets a message from the server.
+ * Gets comments from the server and displays them
+ * in the comments section of the home page.
  */
- function getMessage() {
-  fetch('/data').then(response => response.text()).then(message => {
-    document.getElementById('message-container').innerText = message;
+function getComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const commentsListElement = document.getElementById('comments');
+    commentsListElement.innerHTML = '';
+    for (let index in comments) {
+      commentsListElement.appendChild(createListElement(comments[index]));
+    }
   });
- }
+}
+
+/**
+ * Creates an <li> element containing text.
+ */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}

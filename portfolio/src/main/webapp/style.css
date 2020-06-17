@@ -3,6 +3,10 @@
   margin: 10px 0px;
 }
 
+#comments-container {
+  margin: 20px 0px;
+}
+
 .contact-icon:hover {
   color: dodgerblue;
   cursor: pointer;
