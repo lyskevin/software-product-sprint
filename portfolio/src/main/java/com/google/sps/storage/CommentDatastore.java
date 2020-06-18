@@ -3,7 +3,6 @@ package com.google.sps.storage;
 import java.util.ArrayList;
 
 public class CommentDatastore {
-
   private ArrayList<String> comments;
 
   public CommentDatastore() {
