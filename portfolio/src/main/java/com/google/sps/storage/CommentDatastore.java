@@ -9,7 +9,6 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import java.util.ArrayList;
 
 public class CommentDatastore {
-
   private ArrayList<String> comments;
   private DatastoreService datastore;
 
