@@ -19,7 +19,6 @@ import com.google.sps.util.JsonUtil;
 
 import java.io.IOException;
 import java.util.Optional;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +34,6 @@ public class DataServlet extends HttpServlet {
   @Override
   public void init() {
     commentDatastore = new CommentDatastore();
-    commentDatastore.initializeComments();
   }
 
   @Override
