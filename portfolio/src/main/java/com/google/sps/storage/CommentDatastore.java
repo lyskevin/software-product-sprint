@@ -3,11 +3,14 @@ package com.google.sps.storage;
 import java.util.ArrayList;
 
 public class CommentDatastore {
-
   private ArrayList<String> comments;
 
   public CommentDatastore() {
     comments = new ArrayList<>();
+  }
+
+  public ArrayList<String> getComments() {
+    return comments;
   }
 
   public void initializeComments() {
@@ -16,7 +19,7 @@ public class CommentDatastore {
     comments.add("Google SPS!");
   }
 
-  public ArrayList<String> getComments() {
-    return comments;
+  public void add(String comment) {
+    comments.add(comment);
   }
 }
