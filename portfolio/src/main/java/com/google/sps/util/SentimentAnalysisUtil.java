@@ -19,7 +19,7 @@ public class SentimentAnalysisUtil {
     } catch (IOException ioe) {
       // Score remains as 0 if language service throws an IOException 
     }
-    
+
     return score;
   }
 }

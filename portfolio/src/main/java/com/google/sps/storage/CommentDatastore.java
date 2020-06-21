@@ -29,7 +29,7 @@ public class CommentDatastore {
       float sentimentScore = SentimentAnalysisUtil.getSentimentScore(comment);
       comments.add(String.format("%s (Sentiment Score: %.2f)", comment, sentimentScore));
     }
-    
+
     return comments;
   }
 
