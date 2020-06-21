@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 /** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-
   private static final String HOME_PAGE_URL = "./index.html";
   private static CommentDatastore commentDatastore;
 

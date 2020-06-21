@@ -6,6 +6,7 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.sps.util.SentimentAnalysisUtil;
 import java.util.ArrayList;
 
 public class CommentDatastore {
@@ -24,9 +25,11 @@ public class CommentDatastore {
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      comments.add((String) entity.getProperty("content"));
+      String comment = (String) entity.getProperty("content");
+      float sentimentScore = SentimentAnalysisUtil.getSentimentScore(comment);
+      comments.add(String.format("%s (Sentiment Score: %.2f)", comment, sentimentScore));
     }
-
+    
     return comments;
   }
 
