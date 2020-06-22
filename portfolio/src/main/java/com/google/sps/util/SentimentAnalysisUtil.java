@@ -17,7 +17,8 @@ public class SentimentAnalysisUtil {
       languageService.close();
       score = sentiment.getScore();
     } catch (IOException ioe) {
-      // Score remains as 0 if language service throws an IOException 
+      // An IOException is thrown if the language service client cannot be instantiated.
+      // In this case, the sentiment score remains as 0.
     }
 
     return score;
