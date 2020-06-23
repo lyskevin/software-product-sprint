@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class CommentDatastore {
   private ArrayList<String> comments;
   private DatastoreService datastore;
+  private SentimentAnalysisUtil sentimentAnalysisUtil;
 
   public CommentDatastore() {
     comments = new ArrayList<>();
     datastore = DatastoreServiceFactory.getDatastoreService();
+    sentimentAnalysisUtil = new SentimentAnalysisUtil();
   }
 
   public ArrayList<String> getComments() {
@@ -26,7 +28,7 @@ public class CommentDatastore {
 
     for (Entity entity : results.asIterable()) {
       String comment = (String) entity.getProperty("content");
-      float sentimentScore = SentimentAnalysisUtil.getSentimentScore(comment);
+      float sentimentScore = sentimentAnalysisUtil.getSentimentScore(comment);
       comments.add(String.format("%s (Sentiment Score: %.2f)", comment, sentimentScore));
     }
 
