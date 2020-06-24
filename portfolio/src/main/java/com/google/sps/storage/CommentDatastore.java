@@ -10,9 +10,9 @@ import com.google.sps.util.SentimentAnalysisUtil;
 import java.util.ArrayList;
 
 public class CommentDatastore {
-  private ArrayList<String> comments;
-  private DatastoreService datastore;
-  private SentimentAnalysisUtil sentimentAnalysisUtil;
+  private final ArrayList<String> comments;
+  private final DatastoreService datastore;
+  private final SentimentAnalysisUtil sentimentAnalysisUtil;
 
   public CommentDatastore() {
     comments = new ArrayList<>();
