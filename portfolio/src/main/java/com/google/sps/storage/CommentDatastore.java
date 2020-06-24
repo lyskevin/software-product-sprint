@@ -28,8 +28,8 @@ public class CommentDatastore {
 
     for (Entity entity : results.asIterable()) {
       String comment = (String) entity.getProperty("content");
-      float sentimentScore = sentimentAnalysisUtil.getSentimentScore(comment);
-      comments.add(String.format("%s (Sentiment Score: %.2f)", comment, sentimentScore));
+      String sentimentScore = sentimentAnalysisUtil.getSentimentScore(comment);
+      comments.add(String.format("%s (Sentiment Score: %s)", comment, sentimentScore));
     }
 
     return comments;

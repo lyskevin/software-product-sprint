@@ -10,24 +10,26 @@ public class SentimentAnalysisUtil {
   private final Optional<LanguageServiceClient> languageService;
 
   public SentimentAnalysisUtil() {
+    LanguageServiceClient languageServiceClient;
+
     try {
-      languageService = Optional.ofNullable(LanguageServiceClient.create());
+      languageServiceClient = LanguageServiceClient.create();
     } catch (IOException ioe) {
-      languageService = Optional.empty();
+      languageServiceClient = null;
     }
+
+    languageService = Optional.ofNullable(languageServiceClient);
   }
 
-  public float getSentimentScore(String text) {
-    float score = 0;
-
+  public String getSentimentScore(String text) {
     if (languageService.isPresent()) {
       Document document =
           Document.newBuilder().setContent(text).setType(Document.Type.PLAIN_TEXT).build();
       Sentiment sentiment =
           languageService.get().analyzeSentiment(document).getDocumentSentiment();
-      score = sentiment.getScore();
+      return String.format("%.2f", sentiment.getScore());
+    } else {
+      return "Unavailable at this time.";
     }
-
-    return score;
   }
 }
