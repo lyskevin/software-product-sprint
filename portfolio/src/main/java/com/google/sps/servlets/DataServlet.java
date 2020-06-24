@@ -28,16 +28,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
   private static final String HOME_PAGE_URL = "./index.html";
-  private static CommentDatastore commentDatastore;
-
-  @Override
-  public void init() {
-    commentDatastore = new CommentDatastore();
-  }
+  private static final CommentDatastore commentDatastore = new CommentDatastore();
+  private static final JsonUtil jsonUtil = new JsonUtil();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = JsonUtil.convertToJson(commentDatastore.getComments());
+    String json = jsonUtil.convertToJson(commentDatastore.getComments());
     response.setContentType("application/json");
     response.getWriter().println(json);
   }
