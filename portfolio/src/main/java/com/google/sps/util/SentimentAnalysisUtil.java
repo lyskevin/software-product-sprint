@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class SentimentAnalysisUtil {
-  private Optional<LanguageServiceClient> languageService;
+  private final Optional<LanguageServiceClient> languageService;
 
   public SentimentAnalysisUtil() {
     try {
