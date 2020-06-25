@@ -7,29 +7,16 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class SentimentAnalysisUtil {
-  private final Optional<LanguageServiceClient> languageService;
+  private final LanguageServiceClient languageService;
 
-  public SentimentAnalysisUtil() {
-    LanguageServiceClient languageServiceClient;
-
-    try {
-      languageServiceClient = LanguageServiceClient.create();
-    } catch (IOException ioe) {
-      languageServiceClient = null;
-    }
-
-    languageService = Optional.ofNullable(languageServiceClient);
+  public SentimentAnalysisUtil() throws IOException {
+    languageService = LanguageServiceClient.create();
   }
 
-  public String getSentimentScore(String text) {
-    if (languageService.isPresent()) {
-      Document document =
-          Document.newBuilder().setContent(text).setType(Document.Type.PLAIN_TEXT).build();
-      Sentiment sentiment =
-          languageService.get().analyzeSentiment(document).getDocumentSentiment();
-      return String.format("%.2f", sentiment.getScore());
-    } else {
-      return "Unavailable at this time.";
-    }
+  public float getSentimentScore(String text) {
+    Document document =
+        Document.newBuilder().setContent(text).setType(Document.Type.PLAIN_TEXT).build();
+    Sentiment sentiment = languageService.analyzeSentiment(document).getDocumentSentiment();
+    return sentiment.getScore();
   }
 }
