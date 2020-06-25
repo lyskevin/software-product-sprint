@@ -7,17 +7,23 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.sps.util.SentimentAnalysisUtil;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CommentDatastore {
   private final ArrayList<String> comments;
   private final DatastoreService datastore;
-  private final SentimentAnalysisUtil sentimentAnalysisUtil;
+  private Optional<SentimentAnalysisUtil> sentimentAnalysisUtil;
 
   public CommentDatastore() {
     comments = new ArrayList<>();
     datastore = DatastoreServiceFactory.getDatastoreService();
-    sentimentAnalysisUtil = new SentimentAnalysisUtil();
+    try {
+      sentimentAnalysisUtil = Optional.ofNullable(new SentimentAnalysisUtil());
+    } catch (IOException ioe) {
+      sentimentAnalysisUtil = Optional.empty();
+    }
   }
 
   public ArrayList<String> getComments() {
@@ -28,8 +34,11 @@ public class CommentDatastore {
 
     for (Entity entity : results.asIterable()) {
       String comment = (String) entity.getProperty("content");
-      String sentimentScore = sentimentAnalysisUtil.getSentimentScore(comment);
-      comments.add(String.format("%s (Sentiment Score: %s)", comment, sentimentScore));
+      if (sentimentAnalysisUtil.isPresent()) {
+        float sentimentScore = sentimentAnalysisUtil.get().getSentimentScore(comment);
+        comment += String.format(" (Sentiment Score: %.2f)", sentimentScore);
+      }
+      comments.add(comment);
     }
 
     return comments;
