@@ -51,26 +51,24 @@ public class MeetingScheduler {
    */
   public Collection<TimeRange> getAvailableMeetingTimes() {
     if (!isCached) {
-      orderEventsByStartTime();
-      generateBusyTimeRanges();
+
+      // Order events by start time
+      eventsOrderedByStartTime = events.toArray(eventsOrderedByStartTime);
+      Arrays.sort(eventsOrderedByStartTime,
+          (event1, event2) -> TimeRange.ORDER_BY_START.compare(event1.getWhen(), event2.getWhen()));
+      
+      // Generate busy time ranges
+      for (Event event : eventsOrderedByStartTime) {
+      if (!Collections.disjoint(request.getAttendees(), event.getAttendees())) {
+        processBusyTimeRange(event.getWhen());
+        }
+      }
+
       generateAvailableMeetingTimes();
+
       isCached = true;
     }
     return availableMeetingTimes;
-  }
-
-  private void orderEventsByStartTime() {
-    eventsOrderedByStartTime = events.toArray(eventsOrderedByStartTime);
-    Arrays.sort(eventsOrderedByStartTime,
-        (event1, event2) -> TimeRange.ORDER_BY_START.compare(event1.getWhen(), event2.getWhen()));
-  }
-
-  private void generateBusyTimeRanges() {
-    for (Event event : eventsOrderedByStartTime) {
-      if (!Collections.disjoint(request.getAttendees(), event.getAttendees())) {
-        processBusyTimeRange(event.getWhen());
-      }
-    }
   }
 
   private void processBusyTimeRange(TimeRange busyTimeRange) {
