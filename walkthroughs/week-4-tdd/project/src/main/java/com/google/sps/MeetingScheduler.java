@@ -59,8 +59,8 @@ public class MeetingScheduler {
       
       // Generate busy time ranges
       for (Event event : eventsOrderedByStartTime) {
-      if (!Collections.disjoint(request.getAttendees(), event.getAttendees())) {
-        processBusyTimeRange(event.getWhen());
+        if (!Collections.disjoint(request.getAttendees(), event.getAttendees())) {
+          processBusyTimeRange(event.getWhen());
         }
       }
 
